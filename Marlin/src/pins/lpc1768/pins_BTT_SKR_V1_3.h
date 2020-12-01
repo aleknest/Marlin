@@ -279,7 +279,7 @@
 
     #define BTN_EN1                 EXPA2_08_PIN  // (31) J3-2 & AUX-4
     #define BTN_EN2                 EXPA2_06_PIN  // (33) J3-4 & AUX-4
-    #define BTN_ENC                 EXPA1_09_PIN  // (58) open-drain
+    #define BTN_ENC                 P0_17//EXPA1_09_PIN  // (58) open-drain
 
     #define LCD_PINS_ENABLE         EXPA1_08_PIN
     #define LCD_PINS_D4             EXPA1_06_PIN
@@ -382,3 +382,15 @@
 
 // Include common SKR pins
 #include "pins_BTT_SKR_common.h"
+
+//aleknest SPI 7 pin oled and i2c oled
+#if ENABLED(MKS_12864OLED_SSD1306)
+//  #define LCD_PINS_RS P1_19
+    #define LCD_PINS_DC P1_23
+    #define DOGLCD_CS   P1_21
+    #define DOGLCD_MOSI P1_20
+    #define DOGLCD_SCK  P1_22
+    #define DOGLCD_A0   LCD_PINS_DC
+    #define LCD_SCREEN_ROT_180
+#endif
+
