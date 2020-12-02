@@ -188,6 +188,8 @@
  * M250 - Set LCD contrast: "M250 C<contrast>" (0-63). (Requires LCD support)
  * M260 - i2c Send Data (Requires EXPERIMENTAL_I2CBUS)
  * M261 - i2c Request Data (Requires EXPERIMENTAL_I2CBUS)
+ * M262 - UART Send Data (Requires EXPERIMENTAL_UART)
+ * M263 - UART Read Data (Requires EXPERIMENTAL_UART)
  * M280 - Set servo position absolute: "M280 P<index> S<angle|µs>". (Requires servos)
  * M281 - Set servo min|max position: "M281 P<index> L<min> U<max>". (Requires EDITABLE_SERVO_ANGLES)
  * M290 - Babystepping (Requires BABYSTEPPING)
@@ -682,6 +684,11 @@ private:
   #if ENABLED(EXPERIMENTAL_I2CBUS)
     static void M260();
     static void M261();
+  #endif
+
+  #if ENABLED(EXPERIMENTAL_UART)
+    static void M262();
+    static void M263();
   #endif
 
   #if HAS_SERVOS

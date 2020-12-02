@@ -213,6 +213,10 @@
   #include "feature/mmu2/mmu2.h"
 #endif
 
+#if ENABLED(EXPERIMENTAL_UART)
+  #include "feature/experimental_uart/experimental_uart.h"
+#endif
+
 #if HAS_L64XX
   #include "libs/L64XX/L64XX_Marlin.h"
 #endif
@@ -767,6 +771,8 @@ void idle(TERN_(ADVANCED_PAUSE_FEATURE, bool no_stepper_sleep/*=false*/)) {
   // Update the Průša MMU2
   TERN_(PRUSA_MMU2, mmu2.mmu_loop());
 
+  TERN_(EXPERIMENTAL_UART, experimental_uart.loop());
+
   // Handle Joystick jogging
   TERN_(POLL_JOG, joystick.inject_jog_moves());
 
@@ -1251,6 +1257,10 @@ void setup() {
 
   #if ENABLED(PRUSA_MMU2)
     SETUP_RUN(mmu2.init());
+  #endif
+
+  #if ENABLED(EXPERIMENTAL_UART)
+    experimental_uart.init();
   #endif
 
   #if ENABLED(IIC_BL24CXX_EEPROM)
