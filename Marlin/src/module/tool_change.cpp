@@ -33,6 +33,10 @@
 
 //#define DEBUG_TOOL_CHANGE
 
+  #if ENABLED(EXPERIMENTAL_UART)
+    #include "../feature/experimental_uart/experimental_uart.h" 
+  #endif
+
 #define DEBUG_OUT ENABLED(DEBUG_TOOL_CHANGE)
 #include "../core/debug_out.h"
 
@@ -836,6 +840,15 @@ void tool_change_prime() {
  * previous tool out of the way and the new tool into place.
  */
 void tool_change(const uint8_t new_tool, bool no_move/*=false*/) {
+  #if ENABLED(EXPERIMENTAL_UART)
+  #if HOOK_T_TO_UART
+    String tb = "T";
+    tb += new_tool;
+    experimental_uart.write (tb.c_str());
+    return;
+  #endif
+  #endif
+
 
   if (TERN0(MAGNETIC_SWITCHING_TOOLHEAD, new_tool == active_extruder))
     return;
