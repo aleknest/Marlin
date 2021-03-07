@@ -48,7 +48,7 @@
  *
  * Set this value to 0 to fail on the first error to occur.
  */
-#define THERMOCOUPLE_MAX_ERRORS 15
+#define THERMOCOUPLE_MAX_ERRORS 30
 
 //
 // Custom Thermistor 1000 parameters
@@ -228,13 +228,13 @@
  * Thermal Protection parameters for the heated chamber.
  */
 #if ENABLED(THERMAL_PROTECTION_CHAMBER)
-  #define THERMAL_PROTECTION_CHAMBER_PERIOD    20 // Seconds
+  #define THERMAL_PROTECTION_CHAMBER_PERIOD    60 // Seconds
   #define THERMAL_PROTECTION_CHAMBER_HYSTERESIS 2 // Degrees Celsius
 
   /**
    * Heated chamber watch settings (M141/M191).
    */
-  #define WATCH_CHAMBER_TEMP_PERIOD            60 // Seconds
+  #define WATCH_CHAMBER_TEMP_PERIOD            180 // Seconds
   #define WATCH_CHAMBER_TEMP_INCREASE           2 // Degrees Celsius
 #endif
 
@@ -413,7 +413,7 @@
 // When first starting the main fan, run it at full speed for the
 // given number of milliseconds.  This gets the fan spinning reliably
 // before setting a PWM value. (Does not work with software PWM for fan on Sanguinololu)
-#define FAN_KICKSTART_TIME 1000
+#define FAN_KICKSTART_TIME 2000
 
 // Some coolers may require a non-zero "off" state.
 //#define FAN_OFF_PWM  1
@@ -456,7 +456,7 @@
  *   USE_OCR2A_AS_TOP sacrifices duty cycle control resolution to achieve this broader range of frequencies.
  */
 #if ENABLED(FAST_PWM_FAN)
-  //#define FAST_PWM_FAN_FREQUENCY 31400
+  #define FAST_PWM_FAN_FREQUENCY 31400
   //#define USE_OCR2A_AS_TOP
 #endif
 
@@ -1944,7 +1944,7 @@
  * Currently handles M108, M112, M410, M876
  * NOTE: Not yet implemented for all platforms.
  */
-//#define EMERGENCY_PARSER
+#define EMERGENCY_PARSER
 
 // Bad Serial-connections can miss a received command by sending an 'ok'
 // Therefore some clients abort after 30 seconds in a timeout.
