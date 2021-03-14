@@ -499,9 +499,10 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp 13.33
-    #define DEFAULT_Ki 0.65
-    #define DEFAULT_Kd 68.27
+    //#define DEFAULT_Kp 11.48
+    #define DEFAULT_Kp 20
+    #define DEFAULT_Ki 0.48
+    #define DEFAULT_Kd 69.11
   #endif
 #endif // PIDTEMP
 
@@ -741,14 +742,14 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 600, 102 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 600, 445 } //144 mk8
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 60, 25 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 20, 30 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -790,8 +791,8 @@
  */
 #define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
-  #define DEFAULT_XJERK 20.0
-  #define DEFAULT_YJERK 20.0
+  #define DEFAULT_XJERK 30.0
+  #define DEFAULT_YJERK 30.0
   #define DEFAULT_ZJERK 0.3
 
   //#define TRAVEL_EXTRA_XYJERK 0.0     // Additional jerk allowance for all travel moves
@@ -1131,7 +1132,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 70
+#define Z_MAX_POS 60
 
 /**
  * Software Endstops
